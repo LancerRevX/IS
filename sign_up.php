@@ -16,9 +16,13 @@
                     Password<br>
                     <input type="password" name="password" size="16">
                 </div>
+                <div class="authenticationField">
+                    Repeat<br>
+                    <input type="password" name="password2" size="16">
+                </div>
                 <button class="authenticationButton" type="button" name="button">Submit</button>
             </div>
-            <a href="signup.html">Sign up</a>
+            <a href="sign_in.php">Sign in</a>
         </div>
     </body>
 </html>
