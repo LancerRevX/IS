@@ -1,4 +1,4 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ru" dir="ltr">
     <head>
         <meta charset="utf-8">
@@ -7,7 +7,7 @@
     </head>
     <body>
         <div class="authenticationBlock">
-            <form>
+            <form method="post">
                 <div class="authenticationField">
                     Login<br>
                     <input type="text" name="login" size="16">
@@ -24,5 +24,5 @@
 </html>
 
 <?php
-
+echo $_POST['login'];
 ?>
