@@ -5,6 +5,7 @@ body
     color: white;
     font-family: courier;
     font-size: 16px;
+    text-align: center;
 }
 
 .authenticationBlock
@@ -20,16 +21,54 @@ body
 
 .authenticationField
 {
-    #margin-bottom: 8px;
+    margin-bottom: 8px;
+}
+
+.authenticationButton
+{
+    margin-top: 8px;
+    margin-bottom: 16px;
+}
+
+.document
+{
+    border: 1px solid red;
+    width: 100px;
+    margin: auto;
+}
+
+button
+{
+    border: 1px solid white;
+    color: white;
+    background-color: black;
+    font: inherit;
+    padding: 4px;
+    cursor: pointer;
 }
 
 input
 {
-    border: inherit;
+    border: 1px solid white;
 }
 
 input:focus
 {
     outline: 0;
     border: 1px solid red;
+}
+
+button:focus
+{
+    outline: 0;
+    background-color: white;
+    color: red;
+    border: 1px solid red;
+}
+
+a
+{
+    outline: 0;
+    color: white;
+    margin-top: 16px;
 }
