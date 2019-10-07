@@ -1,3 +1,17 @@
+<?php
+    require_once("connection.php");
+
+    function isLoginCorrect($login)
+    {
+        if (empty($login)) return false;
+        
+        return true;
+    }
+
+    $login = "login";
+    echo $login, " ", isLoginCorrect($login);
+?>
+
 <!DOCTYPE html>
 <html lang="ru" dir="ltr">
     <head>

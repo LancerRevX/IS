@@ -1,3 +1,7 @@
+<?php
+    require_once("connection.php");
+?>
+
 <!DOCTYPE html>
 <html lang="ru" dir="ltr">
     <head>
@@ -7,22 +11,23 @@
     </head>
     <body>
         <div class="authenticationBlock">
-            <form method="post">
-                <div class="authenticationField">
-                    Login<br>
-                    <input type="text" name="login" size="16">
-                </div>
-                <div class="authenticationField">
-                    Password<br>
-                    <input type="password" name="password" size="16">
-                </div>
-                <button class="authenticationButton" type="submit" name="button">Submit</button>
-            </form>
-            <a href="sign_up.php">Sign up</a>
+
+            <?php echo rand(1,8); ?>
+
+            <div class="authenticationBox">
+                <form method="post">
+                    <div class="authenticationField">
+                        Login<br>
+                        <input type="text" name="login" size="16">
+                    </div>
+                    <div class="authenticationField">
+                        Password<br>
+                        <input type="password" name="password" size="16">
+                    </div>
+                    <button class="authenticationButton" type="submit" name="button">Submit</button>
+                </form>
+                <a href="sign_up.php">Sign up</a>
+            </div>
         </div>
     </body>
 </html>
-
-<?php
-echo $_POST['login'];
-?>
