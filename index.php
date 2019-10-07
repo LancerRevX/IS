@@ -1,4 +1,3 @@
 <?php
-echo $_POST['login'];
-echo 'defg';
+    echo "Hello, World!";
 ?>
