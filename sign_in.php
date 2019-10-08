@@ -11,11 +11,8 @@
     </head>
     <body>
         <div class="authenticationBlock">
-
-            <?php echo rand(1,8); ?>
-
             <div class="authenticationBox">
-                <form method="post">
+                <form class="authenticationForm" method="post">
                     <div class="authenticationField">
                         Login<br>
                         <input type="text" name="login" size="16">
@@ -25,8 +22,8 @@
                         <input type="password" name="password" size="16">
                     </div>
                     <button class="authenticationButton" type="submit" name="button">Submit</button>
+                    <br><a href="sign_up.php">Sign up</a>
                 </form>
-                <a href="sign_up.php">Sign up</a>
             </div>
         </div>
     </body>
