@@ -19,6 +19,7 @@
             if (mysqli_num_rows($query) != 0)
             {
                 $_SESSION['login'] = $login;
+                $_SESSION['access'] = mysqli_fetch_array($query)['access'];
                 header("Location: index.php");
             }
             else
@@ -34,6 +35,7 @@
     <head>
         <meta charset="utf-8">
         <link rel="stylesheet" href="style.css">
+        <link rel="icon" href="favicon.png">
         <title>Uber Citadel</title>
     </head>
     <body>

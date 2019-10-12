@@ -48,6 +48,7 @@
     <head>
         <meta charset="utf-8">
         <link rel="stylesheet" href="style.css">
+        <link rel="icon" href="favicon.png">
         <title>Uber Citadel</title>
     </head>
     <body>

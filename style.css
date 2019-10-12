@@ -1,6 +1,6 @@
 body
 {
-    margin: 8px 16px;
+    margin: 16px;
     background-color: black;
     color: white;
     font-family: courier;
@@ -92,10 +92,11 @@ h1
 
 p
 {
-    margin: 8px 0 8px 0;
+    margin: 8px 0;
 }
 
 table
 {
     width: 100%;
+    margin-top: 16px;
 }
