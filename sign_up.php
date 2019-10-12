@@ -8,54 +8,38 @@
         return true;
     }
 
-    function isPasswordCorret($password)
-    {
-        if (empty($password)) return false;
-
-        return true;
-    }
+    session_start();
+    if (isset($_SESSION['login']))
+        header("Location: index.php");
 
     $message = "";
     if (isset($_POST['submit']))
     {
-        echo "worked";
-        if (isLoginCorrect($_POST['login']) && isPasswordCorret($_POST['password']))
-        {
-            if ($_POST['password2'] == $_POST['password'])
-            {
-                $login = $_POST['login'];
-                $password = $_POST['password'];
-                $sql = "SELECT * FROM users WHERE login = '".$login."'";
-                $query = mysqli_query($con, $sql) or trigger_error(mysqli_error($con));
-                $numRows = mysqli_num_rows($query);
-                if ($numRows == 0)
-                {
-                    $sql = "INSERT INTO users (login, password) VALUES('$login', '$password')";
-                    $result = mysqli_query($con, $sql);
-                    if (!$result)
-                    {
-                        $message = "Failed to insert user data";
-                    }
-                    else
-                    {
-                        header("Location: /");
-                    }
-                }
-                else
-                {
-                    $message = "That login already exists";
-                }
-            }
-            else
-            {
-                $message = "Passwords don't match";
-            }
-        }
+        $login = $_POST['login'];
+        $password = $_POST['password'];
+        if (empty($login) && empty($password) && empty($_POST['password2']))
+            $message = "Fill all fields";
+        elseif (!isLoginCorrect($login))
+            $message = "Incorrent login";
+        elseif ($password != $_POST['password2'])
+            $message = "Passwords don't match";
         else
         {
-            $message = "Fill all the fields";
+            $sql = "SELECT * FROM users WHERE login = '".$login."'";
+            $query = mysqli_query($con, $sql) or trigger_error(mysqli_error($con));
+            $numRows = mysqli_num_rows($query);
+            if ($numRows == 0)
+            {
+                $sql = "INSERT INTO users (login, password) VALUES('$login', '$password')";
+                $result = mysqli_query($con, $sql);
+                if (!$result)
+                    $message = "Failed to insert user data";
+                else
+                    $message = "User created";
+            }
+            else
+                $message = "That login already exists";
         }
-        header("Location: sign_up.php");
     }
 ?>
 
@@ -69,9 +53,9 @@
     <body>
         <div class="authenticationBlock">
 
-            <?php echo $message, " ", $_POST['login'], " ", $_POST['password']; ?>
+            <?=$message;?>
 
-            <form class="authenticationForm" method="post" action="">
+            <form class="authenticationForm" method="post">
                 <div class="authenticationField">
                     Login<br>
                     <input type="text" name="login" size="16" value="">

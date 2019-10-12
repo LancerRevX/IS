@@ -1,6 +1,6 @@
 body
 {
-    margin: 0;
+    margin: 8px 16px;
     background-color: black;
     color: white;
     font-family: courier;
@@ -21,8 +21,9 @@ body
 {
     border: 1px solid white;
     padding: 16px;
+    margin: auto;
     margin-top: 16px;
-    text-align: center;
+    width: 128px;
 }
 
 .authenticationField
@@ -36,11 +37,13 @@ body
     margin-bottom: 16px;
 }
 
-.document
+.documentBlock
 {
-    border: 1px solid red;
-    width: 100px;
+    border: 1px solid white;
+    width: 300px;
     margin: auto;
+    margin-top: 16px;
+    padding: 16px;
 }
 
 button
@@ -77,4 +80,22 @@ a
     outline: 0;
     color: white;
     margin-top: 16px;
+}
+
+h1
+{
+    font-size: inherit;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+p
+{
+    margin: 8px 0 8px 0;
+}
+
+table
+{
+    width: 100%;
 }
