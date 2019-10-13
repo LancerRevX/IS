@@ -43,32 +43,34 @@
             elseif ($_SESSION['access'] < mysqli_fetch_array($query)['access'])
                 echo "<p>Access denied</p>";
             else
+            {
                 $row = mysqli_fetch_array($query);
                 echo "
                 <form class='editForm' method='post'>
-                    Title <input style='margin-top: 16px' type='text' name='title' size=32 value='".$row['title']."'>
+                    <div class=''
+                    Title <input type='text' name='title' size=32 value='".$row['title']."'>
                     Access
                 ";
                 switch ($_SESSION['access'])
                 {
                     case 'A':
                     echo "
-                        A <input style='margin-top: 16px' type='radio' name='access' value='A' checked>
+                        A <input type='radio' name='access' value='A' checked>
                     ";
                     break;
 
                     case 'B':
                     echo "
-                        A <input style='margin-top: 16px' type='radio' name='access' value='A'>
-                        B <input style='margin-top: 16px' type='radio' name='access' value='B' checked>
+                        A <input type='radio' name='access' value='A'>
+                        B <input type='radio' name='access' value='B' checked>
                     ";
                     break;
 
                     case 'C':
                     echo "
-                        A <input style='margin-top: 16px' type='radio' name='access' value='A'>
-                        B <input style='margin-top: 16px' type='radio' name='access' value='B'>
-                        C <input style='margin-top: 16px' type='radio' name='access' value='C' checked>
+                        A <input type='radio' name='access' value='A'>
+                        B <input type='radio' name='access' value='B'>
+                        C <input type='radio' name='access' value='C' checked>
                     ";
                     break;
                 }
@@ -77,6 +79,7 @@
                     <button type='submit' name='submit'>Submit</button>
                 </form>
                 ";
+            }
         ?>
     </body>
 </html>
