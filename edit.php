@@ -22,6 +22,16 @@
             header("Location: index.php");
         }
     }
+    else
+    {
+        $sql = "SELECT * FROM documents WHERE id = ".$_GET['id'];
+        $query = mysqli_query($con, $sql);
+        $row = mysqli_fetch_array($query);
+        if (!mysqli_num_rows($query) || $row['access'] != $_SESSION['access'])
+            header("Location: ".$_SERVER['PHP_SELF']);
+        $checked = array('A' => '', 'B' => '', 'C' => '');
+        $checked[$row['access']] = "checked";
+    }
 ?>
 
 <!DOCTYPE html>
@@ -33,53 +43,25 @@
         <title>Uber Citadel</title>
     </head>
     <body>
-        <a href="index.php">Return</a>
-        <br>
-        <?php
-            $sql = "SELECT * FROM documents WHERE id = ".$_GET['id'];
-            $query = mysqli_query($con, $sql);
-            if (!mysqli_num_rows($query))
-                echo "<p>This document does not exist</p>";
-            elseif ($_SESSION['access'] < mysqli_fetch_array($query)['access'])
-                echo "<p>Access denied</p>";
-            else
-            {
-                $row = mysqli_fetch_array($query);
-                echo "
-                <form class='editForm' method='post'>
-                    <div class=''
-                    Title <input type='text' name='title' size=32 value='".$row['title']."'>
-                    Access
-                ";
-                switch ($_SESSION['access'])
-                {
-                    case 'A':
-                    echo "
-                        A <input type='radio' name='access' value='A' checked>
-                    ";
-                    break;
-
-                    case 'B':
-                    echo "
-                        A <input type='radio' name='access' value='A'>
-                        B <input type='radio' name='access' value='B' checked>
-                    ";
-                    break;
-
-                    case 'C':
-                    echo "
-                        A <input type='radio' name='access' value='A'>
-                        B <input type='radio' name='access' value='B'>
-                        C <input type='radio' name='access' value='C' checked>
-                    ";
-                    break;
-                }
-                echo "
-                    <textarea name='text'>".$row['text']."</textarea>
-                    <button type='submit' name='submit'>Submit</button>
-                </form>
-                ";
-            }
-        ?>
+        <div style="margin-top: 16px;">
+            <a href="index.php">Return</a>
+        </div>
+        <form class="editForm">
+            <div>
+                Title
+                <input type="text" name="title" value="<?=$row['title']?>">
+                Access
+                <label for="A">A</label>
+                <input id="A" type="radio" name="access" value="A" <?=$checked['A']?>>
+                <label for="B">B</label>
+                <input id="B" type="radio" name="access" value="B" <?=$checked['B']?>>
+                <label for="C">C</label>
+                <input id="C" type="radio" name="access" value="C" <?=$checked['C']?>>
+            </div>
+            <textarea name="text" spellcheck="false"><?=$row['text']?></textarea>
+            <div>
+                <button type="submit" name="submit">Submit</button>
+            </div>
+        </form>
     </body>
 </html>

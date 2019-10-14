@@ -17,7 +17,7 @@
     <body>
         <a id="create" href="create.php">Create document</a>
         <a id="logout" href="logout.php">Logout</a>
-
+        <div style="padding: 0 16px;">
         <?php
             $sql = "SELECT * FROM documents WHERE access <= '".$_SESSION['access']."'";
             $query = mysqli_query($con, $sql);
@@ -26,7 +26,7 @@
             else
             {
                 echo "
-                <table border='1'>
+                <table class='documentsTable' border='1'>
                     <tr>
                         <td>id</td>
                         <td>title</td>
@@ -57,5 +57,6 @@
                 }
             }
         ?>
+        </div>
     </body>
 </html>

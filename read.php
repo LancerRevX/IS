@@ -17,22 +17,20 @@
     <body>
         <a href="index.php">Return</a>
         <br>
-        <p>
         <?php
             $sql = "SELECT * FROM documents WHERE id = ".$_GET['id'];
             $query = mysqli_query($con, $sql);
             $row = mysqli_fetch_array($query);
             if (!mysqli_num_rows($query))
-                echo "This document does not exist";
+                echo "<p>This document does not exist</p>";
             elseif ($_SESSION['access'] < $row['access'])
-                echo "Access denied";
+                echo "<p>Access denied</p>";
             else
             {
-                echo "<h1>".$row['title']."</h1><br>".$row['text'];
+                echo "<h1>".$row['title']."</h1><br><p>".$row['text']."</p>";
                 $sql = "UPDATE documents SET `read` = now() WHERE id = ".$_GET['id'];
                 $query = mysqli_query($con, $sql);
             }
         ?>
-        </p>
     </body>
 </html>
