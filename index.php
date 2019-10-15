@@ -48,13 +48,12 @@
                     echo "<td>".$row['created']."</td>";
                     echo "<td>".$row['edited']."</td>";
                     echo "<td>".$row['read']."</td>";
-                    echo "
-                    <td>
-                    <a href='read.php?id=".$row['id']."'>Read</a>
-                    <a href='edit.php?id=".$row['id']."'>Edit</a>
-                    </td>";
-                    echo "</tr></table>";
+                    echo "<td><a href='read.php?id=".$row['id']."'>Read</a>";
+                    if ($row['access'] == $_SESSION['access']) echo " <a href='edit.php?id=".$row['id']."'>Edit</a>";
+                    echo "</td>";
+                    echo "</tr>";
                 }
+                echo "</table>";
             }
         ?>
         </div>

@@ -14,9 +14,12 @@
             header("Location: ".$_SERVER['REQUEST_URI']);
         else
         {
-            $sql = "UPDATE documents SET title = '".$title."', text = '".$text."', access = '".$access."', edited = now() WHERE id = ".$_GET['id'];
+            // $sql = "SELECT * FROM documents WHERE title = '".$title"'";
+            // $query = mysqli_query($con, $sql);
+            // if (mysqli_num_rows($query) > 0)
+            $sql = "INSERT INTO documents (title, author, access, created, edited, `read`, text) VALUES ('".$title."', '".$_SESSION['login']."', '".$access."', now(), now(), now(), '".$text."')";
             $query = mysqli_query($con, $sql);
-            header("Location: index.php");
+            //header("Location: index.php");
         }
     }
 ?>
@@ -33,7 +36,7 @@
         <div style="margin-top: 16px;">
             <a href="index.php">Return</a>
         </div>
-        <form class="editForm">
+        <form class="editForm" method="post">
             <div>
                 Title
                 <input type="text" name="title" value="New Document">

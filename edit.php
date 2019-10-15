@@ -46,7 +46,7 @@
         <div style="margin-top: 16px;">
             <a href="index.php">Return</a>
         </div>
-        <form class="editForm">
+        <form class="editForm" method="post">
             <div>
                 Title
                 <input type="text" name="title" value="<?=$row['title']?>">
